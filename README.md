@@ -12,9 +12,9 @@
 1. 将仓库克隆到本地：
 
     ```bash
-    $ git clone https://github.com/havenxie/weapp-sportsnews.git weapp-sportsnews --depth 1
+    $ git clone https://github.com/havenxie/weapp-wmqy --depth 1
 
-    $ cd weapp-sportsnews
+    $ cd weapp-wmqy
     ```
 
 2. 打开`微信Web开发者工具`
@@ -33,9 +33,9 @@
 7. 代码中用到了大量ES6的语法，可能需要node环境，请自行安装。
 
 8. TODO List
-   1. aaa
-   2. bbb
-   3. ccc
+   - aaa
+   - bbb
+   - ccc
 
 
 ### 联系作者
