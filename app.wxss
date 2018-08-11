@@ -36,12 +36,17 @@ page {
 }
 
 /* =============================================================================== */
+.news {
+  display: flex;
+  flex-direction: column;
+  padding: 10rpx;
+}
 
 .newitem {
   display: flex;
+  flex-direction: row;
   border-bottom: 4rpx solid #f4f4f4;
-  padding: 10rpx;
-  cursor: pointer;
+  padding: 6rpx 0;
   position: relative;
 }
 
@@ -54,11 +59,12 @@ page {
 .newitem .meta {
   flex: 1;
   height: 200rpx;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .newitem .meta .title{
-  display: block;
   margin-top: 10rpx;
   font-size: 38rpx;
   letter-spacing: 2rpx;
@@ -71,13 +77,14 @@ page {
 }
 
 .newitem .meta .other {
-  position: absolute;
-  bottom: 10rpx;
-  right: 10rpx;
+  display: flex;
+  flex-direction: row-reverse;
   color: #999;
+  position: relative;
 }
 .newitem .meta .other .source {
-  float: left;
+  position: absolute;
+  left: 10rpx;
   font-size: 20rpx;
 }
 .newitem .meta .other .source .logo {
@@ -89,23 +96,19 @@ page {
 .newitem .meta .other .source .detail {
   margin-right: 18rpx;
 }
+
 .newitem .meta .other .comment {
-  float: right;
   margin-right: 30rpx;
   font-size: 24rpx;
-  display: inline-block;
 }
 .newitem .meta .other .zhuanti {
-  float: right;
   margin-right: 30rpx;
-  margin-top: -2rpx;
-  padding: 0 8rpx;
+  padding: 0 6rpx;
   font-size: 24rpx;
   line-height: 30rpx;
   color: #de0000;
   border: 1rpx solid #de0000;
-  border-radius: 6rpx;
-  display: inline-block;
+  border-radius: 8rpx;
 }
 
 /* =============================================================================== */ 
