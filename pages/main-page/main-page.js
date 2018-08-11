@@ -34,40 +34,43 @@ Page({
      * @return {[type]} [description]
      */
     initLoad() {
-        this.showLoading();
-        newsdata.find('ClientNews', {
-                id: 'TY43,FOCUSTY43,TYTOPIC',
-                page: 1
-            })
-            .then(d => {
-                d.forEach((obj, index) => {
-                    let validData = obj.item;
-                    if (!validData)
-                        return;
-                    let typeData = obj.type;
-                    if (typeData == 'focus') { //首页轮播图
-                        this.setData({
-                            swiper: obj,
-                        });
-                    } else if (typeData == 'secondnav') { //首页专题导航
-                        this.setData({
-                            special: obj,
-                        });
-                    } else if (typeData == 'list') { //首页新闻列表
-                        this.setData({
-                            news: obj,
-                        });
-                    }
-                    this.hideLoading();
-                })
-            })
-            .catch(e => {
-                console.error(e)
-                this.setData({
-                    movies: [],
-                })
-                this.hideLoading();
-            })
+      this.showLoading();
+      newsdata.find('carousel.json.php', {})
+        .then(d => {
+          if(d.code == 200 && d.desc == 'ok') {
+            this.setData({
+              swiper : d.data
+            });
+            this.hideLoading();
+          } else {
+            console.log(d.code, d.desc);
+          }
+        })
+        .catch(e => {
+          this.setData({
+            subtitle: '获取数据异常',
+          })
+          console.error(e);
+          this.hideLoading();
+        })
+      newsdata.find('list.json.php', {})
+      .then(d => {
+        if(d.code == 200 && d.desc == 'ok') {
+          console.log(d);
+          this.setData({
+            news: d
+          });
+        } else {
+          console.log(d.code, d.desc);
+        }
+      })
+      .catch(e => {
+        this.setData({
+          subtitle: '获取数据异常',
+        })
+        console.error(e);
+        this.hideLoading();
+      })
             
     },
 
@@ -76,36 +79,35 @@ Page({
      * @return {[type]} [description]
      */
     loadMore() {
-      
-        this.showLoading();
-        let currentPage = this.data.news.currentPage;
-        if (currentPage >= this.data.news.totalPage) {
+      this.showLoading();
+      let currentPage = this.data.news.page;
+      if (currentPage >= this.data.news.maxpage) {
+          this.setData({
+              hasMore: false,
+          });
+          this.hideLoading();
+          return;
+      }
+      newsdata.find('list.json.php', {
+          page: ++currentPage
+        })
+        .then(d => {
+          console.log(d);
+            let newNews = d;
+            let oldNewsItems = this.data.news.data;//[]
+            newNews.data = oldNewsItems.concat(d.data);
             this.setData({
-                hasMore: false,
+                news: newNews,
             });
-            return;
-        }
-        newsdata.find('ClientNews', {
-                id: 'TY43',
-                page: ++currentPage
+            this.hideLoading();
+        })
+        .catch(e => {
+            this.setData({
+                subtitle: '获取数据异常',
             })
-            .then(d => {
-                let newnews = d[0];
-
-                let olditem = this.data.news.item;
-                newnews.item = olditem.concat(newnews.item);
-                this.setData({
-                    news: newnews,
-                });
-                this.hideLoading();
-            })
-            .catch(e => {
-                this.setData({
-                    subtitle: '获取数据异常',
-                })
-                console.error(e);
-                this.hideLoading();
-            })
+            console.error(e);
+            this.hideLoading();
+        })
            
     },
     navToSpecial(event) {
