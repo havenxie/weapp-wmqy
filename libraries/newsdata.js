@@ -8,8 +8,9 @@ function fetchApi (type, params, flag) {
   return new Promise((resolve, reject) => {
     wx.request({
       url: `${API_URL}/${type}`,
+      method: 'POST',
       data: Object.assign({}, params),
-      header: { 'Content-Type': 'json' },
+      header: { 'Content-Type': 'application/x-www-form-urlencoded' },
       success: resolve,
       fail: reject
     })

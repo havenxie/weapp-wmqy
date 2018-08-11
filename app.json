@@ -10,7 +10,7 @@
     "pages/logs/logs"
   ],
   "window":{
-    "navigationBarBackgroundColor": "#de0000",
+    "navigationBarBackgroundColor": "#1100fa",
     "navigationBarTitleText": "文明清远",
     "navigationStyle": "default",
     "navigationBarTextStyle":"#000",

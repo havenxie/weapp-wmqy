@@ -46,7 +46,7 @@ page {
   display: flex;
   flex-direction: row;
   border-bottom: 4rpx solid #f4f4f4;
-  padding: 6rpx 0;
+  padding: 16rpx 0;
   position: relative;
 }
 
@@ -54,6 +54,7 @@ page {
   width: 280rpx;
   height: 200rpx;
   margin-right: 20rpx;
+  border-radius: 16rpx;
 }
 
 .newitem .meta {

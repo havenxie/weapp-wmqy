@@ -38,6 +38,7 @@ Page({
       newsdata.find('carousel.json.php', {})
         .then(d => {
           if(d.code == 200 && d.desc == 'ok') {
+            console.log(d);
             this.setData({
               swiper : d.data
             });
