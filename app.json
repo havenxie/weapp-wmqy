@@ -10,13 +10,12 @@
     "pages/logs/logs"
   ],
   "window":{
-    "navigationBarBackgroundColor": "#1100fa",
+    "navigationBarBackgroundColor": "#532dfa",
     "navigationBarTitleText": "文明清远",
     "navigationStyle": "default",
     "navigationBarTextStyle":"#000",
     "backgroundColor": "#fff",
     "backgroundTextStyle": "durk",
     "enablePullDownRefresh": true
-    
   }
 }

@@ -132,14 +132,15 @@ Page({
         });
     },
     navToArticle(event) {
-        let str = dealUrl.getUrlTypeId(event);
-        wx.navigateTo({
-            url: '../article-page/article-page' + str,
-            success: (res) => {},
-            fail: (err) => {
-                console.log(err)
-            }
-        });
+      console.log(event.currentTarget.dataset.id);
+      let str = event.currentTarget.dataset.id;
+      wx.navigateTo({
+        url: '../article-page/article-page?id=' + str,
+          success: (res) => {},
+          fail: (err) => {
+              console.log(err)
+          }
+      });
     },
     navToVideo(event) {
         let str = event.currentTarget.dataset.id;

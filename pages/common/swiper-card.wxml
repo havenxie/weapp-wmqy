@@ -1,7 +1,7 @@
 <!-- 轮播图组件子元素 -->
 <template name="swiper-item">
   <swiper-item >
-    <view class="slide-nav" bindtap='navToPicture' data-id="{{item.articleid}}" >
+    <view class="slide-nav" bindtap='navToArticle' data-id="{{item.articleid}}" >
     <image src="{{item.img}}" mode="aspectFill"/>
     <text class="title">{{item.title}}</text>
     </view>

@@ -2,34 +2,29 @@
 <loading hidden="{{!loading}}">加载中...</loading>
 <scroll-view scroll-y="true">
     <view class="body">
-        <text class="title">{{body.title}}</text>
+        <text class="title">{{title}}</text>
 
-        <view wx:if="{{body.subscribe}}" class="subscribe">
-            <image wx:if="{{body.subscribe.logo}}" class="logo" src="{{body.subscribe.logo}}" />
+        <view class="subscribe">
+            <view wx:if="{{logo != ''}}" class="logo">
+              <image class="img" src="{{}}" />
+            </view>
             <view class="info">
-                <text wx:if="{{body.subscribe.catename}}" class="catename">{{body.subscribe.catename}}</text><!--  | <text wx:if="{{body.subscribe.cateSource}}" class="cateSource">{{body.subscribe.cateSource}}</text> -->
-                <view class="time">
-                    <text>{{body.editTime}}</text>
-                </view>
+                <view wx:if="{{source != ''}}" class="catename">{{source}}</view>
+                <view wx:if="{{author != ''}}" class="author">{{author}}</view>
             </view> 
-            <view class="take" bindtap="dingyue">订阅</view>
+            <view class='time'>{{time}}</view>
+            <!-- <view class="take" bindtap="dingyue">订阅</view> -->
         </view>
 
         <view class="content">
-            <block wx:for="{{wxml}}"  wx:for-index="outIndex"  wx:for-item="outItem" wx:key="obj">
-                <block wx:if="{{outItem.type == 'view'}}">
-                    <block wx:for="{{outItem.child}}" wx:for-index="innerIndex"  wx:for-item="innerItem" wx:key="text">
-                        <block wx:if="{{innerItem.type == 'text' && innerItem.text != ' '}}">
-                            <view class="p">
-                                {{innerItem.text}}
-                            </view>
-                        </block>
-                    </block>
-                </block>
-                <block wx:if="{{outItem.type == 'img'}}">
-                    <image class="img" src="{{outItem.attr.src}}" mode="widthFix"></image>
-                </block>
+          <block wx:for="{{select}}" wx:for-index="Index"  wx:for-item="Item" wx:key="key">
+            <block wx:if="{{Item.img}}">
+             <image class="img" src="{{Item.img}}" mode="widthFix"></image>
             </block>
+            <block wx:elif="{{Item.txt}}">
+              <view class="p">{{Item.txt}}</view>
+            </block>
+          </block>
         </view>
 
         <view class="footer">
