@@ -10,6 +10,8 @@ Page({
     contents: [],
     imgs: [],
     loading: true,
+    scrollTop: 0,
+    showGoTop: false,
 	},
 
 	onLoad(option) {
@@ -17,7 +19,7 @@ Page({
     newsdata.find('article.json.php', params)
 			.then(res => {
         if (res.code == 200 && res.desc == 'ok') {
-          console.log(res.data);
+          console.log(res.data.contents);
           let imgsLen = res.data.imgs.length;
           let contentsLen = res.data.contents.length;
           let imgsCnt = 0, contentsCnt = 0;
@@ -45,7 +47,7 @@ Page({
               }
             }
           }
-          console.log(selectArr);
+          //console.log(selectArr);
           this.setData({
             loading: false,
             title: res.data.title,
@@ -73,6 +75,23 @@ Page({
 			fail: () => {}
 		});
 	},
+  toTop(event) {//点击返回顶部
+    this.setData({
+      scrollTop: 0,
+    });
+  },
+  scroll(event) {//页面滚动时候触发
+    //console.log(event)
+    if (event.detail.scrollTop > 200) {
+      this.setData({
+        showGoTop: true,
+      });
+    } else {
+      this.setData({
+        showGoTop: false,
+      });
+    }
+  },
 	 /**
      * [onPullDownRefresh 下拉页面不做处理]
      * @return {[type]} [description]

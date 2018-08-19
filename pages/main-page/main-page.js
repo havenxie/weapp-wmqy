@@ -38,7 +38,7 @@ Page({
       newsdata.find('carousel.json.php', {})
         .then(d => {
           if(d.code == 200 && d.desc == 'ok') {
-            console.log(d);
+            //console.log(d);
             this.setData({
               swiper : d.data
             });
@@ -57,7 +57,7 @@ Page({
       newsdata.find('list.json.php', {})
       .then(d => {
         if(d.code == 200 && d.desc == 'ok') {
-          console.log(d);
+          //console.log(d);
           this.setData({
             news: d
           });
@@ -93,7 +93,7 @@ Page({
           page: ++currentPage
         })
         .then(d => {
-          console.log(d);
+          //console.log(d);
             let newNews = d;
             let oldNewsItems = this.data.news.data;//[]
             newNews.data = oldNewsItems.concat(d.data);
@@ -106,7 +106,7 @@ Page({
             this.setData({
                 subtitle: '获取数据异常',
             })
-            console.error(e);
+            //console.error(e);
             this.hideLoading();
         })
            
@@ -132,7 +132,7 @@ Page({
         });
     },
     navToArticle(event) {
-      console.log(event.currentTarget.dataset.id);
+      //console.log(event.currentTarget.dataset.id);
       let str = event.currentTarget.dataset.id;
       wx.navigateTo({
         url: '../article-page/article-page?id=' + str,
@@ -162,8 +162,21 @@ Page({
             }
         });
     },
-    toTop() {
-        console.log(111)
+    toTop(event) {//点击返回顶部
+      this.setData({
+        scrollTop: 0,
+      });
+    },
+    scroll(event) {//页面滚动时候触发
+      if (event.detail.scrollTop > 200) {
+        this.setData({
+          showGoTop: true,
+        });
+      } else {
+        this.setData({
+          showGoTop: false,
+        });
+      }
     },
     searchIcon() {
         // wx.navigateTo({ url: '../logs/logs' });
@@ -191,11 +204,6 @@ Page({
     },
     ensureBtn(event) {//确定按钮事件
         this.bindSearch();
-    },
-    scroll(event) {
-        this.setData({
-            showSearch: true,
-        }); 
     },
     /**
      * [onLoad 载入页面时执行的生命周期初始函数]

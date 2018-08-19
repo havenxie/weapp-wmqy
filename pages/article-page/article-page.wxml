@@ -1,6 +1,10 @@
+<import src="../common/totop.wxml"/>
+
 
 <loading hidden="{{!loading}}">加载中...</loading>
-<scroll-view scroll-y="true">
+<template is="toTop"  data="{{showGoTop}}"/>
+
+<scroll-view scroll-y="true" style="height: 100%;" scroll-top="{{scrollTop}}" bindscroll="scroll">
     <view class="body">
         <text class="title">{{title}}</text>
 
@@ -22,7 +26,7 @@
              <image class="img" src="{{Item.img}}" mode="widthFix"></image>
             </block>
             <block wx:elif="{{Item.txt}}">
-              <view class="p">{{Item.txt}}</view>
+              <text class="p">{{Item.txt}}</text>
             </block>
           </block>
         </view>

@@ -49,6 +49,7 @@
   padding: 30rpx 0 10rpx;
 }
 .body .content .p {
+  display: inline-block;
   padding:20rpx 30rpx;
   font-size:36rpx;
   line-height:1.8;
