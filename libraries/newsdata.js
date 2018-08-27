@@ -1,4 +1,4 @@
-const API_URL = 'http://qx.sj0763.com/cms';
+const API_URL = 'https://qx.sj0763.com/cms';
 // const API_URL = 'https://api.iclient.ifeng.com';
 const API_URL2 = 'https://api.3g.ifeng.com';
 const API_LIVE = 'https://sports.live.ifeng.com/API';
