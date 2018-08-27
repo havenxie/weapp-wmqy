@@ -168,15 +168,16 @@ Page({
       });
     },
     scroll(event) {//页面滚动时候触发
-      if (event.detail.scrollTop > 200) {
-        this.setData({
-          showGoTop: true,
-        });
-      } else {
-        this.setData({
-          showGoTop: false,
-        });
-      }
+    console.log(event)
+      // if (event.detail.scrollTop > 200) {
+      //   this.setData({
+      //     showGoTop: true,
+      //   });
+      // } else {
+      //   this.setData({
+      //     showGoTop: false,
+      //   });
+      // }
     },
     searchIcon() {
         // wx.navigateTo({ url: '../logs/logs' });
