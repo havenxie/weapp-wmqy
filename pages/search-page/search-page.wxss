@@ -41,3 +41,7 @@
 }
 
 
+.searchPage {
+	background-color: #de0000;
+	color: #666;
+}

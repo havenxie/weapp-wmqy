@@ -15,51 +15,49 @@ Page({
         winHeight: 0,
         localParams: {}
     },
-
-    loadData(option) {
-        // if(app.getNetworkType() == 'none') {
-        //     this.setData({
-        //         loading: false
-        //     })
-        //     return false;
-        // }
-
-        let params = {};
-        let urlType = option.urlType;
-        for(let index in option) {
-            if(index != 'urlType') {
-                params[index] = option[index];
-            }
-        }
-        // delete params.urlType; //返回的是一个bool值
+    hideLoading() {
+        wx.hideNavigationBarLoading();
+        wx.stopPullDownRefresh();
         this.setData({
-            subtitle: '加载中...',
-            loading: true
-        })
-        newsdata.find(urlType, params)
-        .then(d => {
-            let tempTitle = [];
-            d.body.subjects.forEach((item, index) => {
-                if(item.title) {
-                    tempTitle.push(item.title);
+            loading: false
+        });
+    },
+    loadData(option) {
+        let that = this
+        console.log(option)
+          newsdata.find('search.json.php', {
+            query: option.key,
+            page: 1
+          })
+          .then(d => {
+            that.hideLoading();
+            if(d.code == 200 && d.desc == 'ok') {
+                console.log(d);
+                
+                if(d.data.length == 0) {
+                    wx.showModal({
+                        title: '提示',
+                        content: `你查询的关键词：“${option.key}”没有搜索到任何内容，请输入其他关键词。`,
+                        success: () => {},
+                        fail: () => {}
+                    });
+                    console.log('没有搜索到结果，请重新输入关键词')
+                } else {
+                    that.setData({
+                
+                    });
                 }
-            });
-            this.setData({
-                content: d.body.content,
-                subjects: d.body.subjects,
-                head: d.body.head,
-                navTitle: tempTitle,
-                loading: false,
-                hasMore: false
-            });
-        })
-        .catch(e => {
-            this.setData({
-                subtitle: '获取数据异常',
-                loading: false
+             } else {
+              console.log(d.code, d.desc);
+            }
+          })
+          .catch(e => {
+            that.setData({
+              subtitle: '获取数据异常',
             })
-            console.error(e)
-        })
+            console.error(e);
+            that.hideLoading();
+          })
     },
     navToPicture(event) {
         let str = dealUrl.getUrlTypeId(event);

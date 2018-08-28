@@ -1,7 +1,7 @@
 {
   "pages":[
     "pages/main-page/main-page",
-    "pages/special-page/special-page",
+    "pages/search-page/search-page",
     "pages/article-page/article-page",
     "pages/picture-page/picture-page",
     "pages/video-page/video-page",

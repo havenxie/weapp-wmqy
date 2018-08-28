@@ -7,74 +7,67 @@
 <import src="../common/totop.wxml"/>
 
 <loading hidden="{{!loading}}">加载中...</loading>
+
 <!-- 快速到顶部 -->
 <template is="toTop"  data="{{showGoTop}}"/>
 
-<!-- 时间栏部分 -->
-<!-- <view wx:if="{{true}}" class="timeNav"></view> -->
 
+ <view class="container" bindtouchmove="scroll" onReachBottom="loadMore"> 
+<!-- <scroll-view class="container" scroll-y="true" style="height: 100%;" bindscrolltolower="loadMore" scroll-top="{{scrollTop}}" bindscroll="scroll">   -->
 
-<!-- html -->
-<!-- <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.0.js"></script> -->
+  <!-- 轮播图部分 -->
+  <view class="head">
+    <template is="swiper" data="{{swiper}}"></template>
+  </view>
 
- <!-- <view class="container" bindtouchmove="scroll" onReachBottom="loadMore">  -->
-<view>
-<scroll-view class="container" scroll-y="true" style="height: 100%;" bindscrolltolower="loadMore" scroll-top="{{scrollTop}}" bindscroll="scroll">  
-
-
-
-<!-- 轮播图部分 -->
-<view class="head">
-  <template is="swiper" data="{{swiper}}"></template>
-</view>
-
-<view class="news">
-  <block wx:for="{{news.data}}" wx:key="news">
-      <template is="article-card" data="{{item}}" />
-  </block>
-</view>
-
-
-<!-- 搜索框部分 -->
-<!-- <view class="{{showSearch == true? 'search' : 'search height'}}">
-  <input type="text" placeholder="请输入关键字" focus="true" confirm-type="search" bindconfirm="bindSearch" bindinput="bindKeyInput" class="searcharea" wx:if="{{showSearch != true}}"/>
-  <view class="searchbtn" wx:if="{{showSearch != true}}" bindtap="ensureBtn">确定</view>
-  <icon  type="search" class="search-icon" size="26" bindtap="searchIcon" color="#de0000" wx:if="{{showSearch == true}}"/>
-</view> -->
-
-<!-- 专题栏导航部分 -->
-<!-- <view class="special">
-  <block wx:for="{{special.item}}" wx:key="special">
-    <view class="navitem" bindtap='navToSpecial' data-id="{{item.title == '直播' ? (item.id + '&gv=5.5.3') : item.id}}">
-        <image src="{{item.thumbnail}}" class="navimg" mode="aspectFill"/>
-        <text class="title">{{item.title}}</text>     
-    </view>
+  <!-- 新闻列表部分 -->
+  <view class="news">
+    <block wx:for="{{news.data}}" wx:key="news">
+        <template is="article-card" data="{{item}}" />
     </block>
-</view> -->
+  </view>
 
-<!-- 新闻列表部分 -->
-<!-- <view class="news">
-  <block wx:for="{{news.item}}" wx:key="news">
-    <block wx:if="{{item.type == 'doc'}}">
-      <template is="article-card" data="{{item}}" />
-    </block>
-    <block wx:elif="{{item.type == 'slide'}}">
-      <template is="picture-card" data="{{item}}" />
-    </block>
-    <block wx:elif="{{item.type == 'topic2'}}">
-      <template is="topic2-card" data="{{item}}" />
-    </block>
-    <block wx:elif="{{item.type == 'sports_live'}}">
-      <template is="doclive-card" data="{{item}}"/>
-    </block> 
-  </block>
-</view> -->
 
-<!-- 加载更多部分 -->
-<view class="tips">
-    <view wx:if="{{hasMore}}"><image src="/images/loading.gif" mode="aspectFill"/><text>玩了命的加载中...</text></view>
-    <view wx:else><text>没有更多内容了</text></view>
-</view>
+  <!-- 搜索框部分 -->
+  <view class="{{showSearch == true? 'search' : 'search height'}}">
+    <input type="text" placeholder="请输入关键字" focus="true" confirm-type="search" bindconfirm="bindSearch" bindinput="bindKeyInput" class="searcharea" wx:if="{{showSearch != true}}"/>
+    <view class="searchbtn" wx:if="{{showSearch != true}}" bindtap="ensureBtn">确定</view>
+    <icon  type="search" class="search-icon" size="30" bindtap="searchIcon" color="#999" wx:if="{{showSearch == true}}"/>
+  </view>
 
-</scroll-view>
+  <!-- 专题栏导航部分 -->
+  <!-- <view class="special">
+    <block wx:for="{{special.item}}" wx:key="special">
+      <view class="navitem" bindtap='navToSpecial' data-id="{{item.title == '直播' ? (item.id + '&gv=5.5.3') : item.id}}">
+          <image src="{{item.thumbnail}}" class="navimg" mode="aspectFill"/>
+          <text class="title">{{item.title}}</text>     
+      </view>
+      </block>
+  </view> -->
+
+  <!-- 新闻列表部分 -->
+  <!-- <view class="news">
+    <block wx:for="{{news.item}}" wx:key="news">
+      <block wx:if="{{item.type == 'doc'}}">
+        <template is="article-card" data="{{item}}" />
+      </block>
+      <block wx:elif="{{item.type == 'slide'}}">
+        <template is="picture-card" data="{{item}}" />
+      </block>
+      <block wx:elif="{{item.type == 'topic2'}}">
+        <template is="topic2-card" data="{{item}}" />
+      </block>
+      <block wx:elif="{{item.type == 'sports_live'}}">
+        <template is="doclive-card" data="{{item}}"/>
+      </block> 
+    </block>
+  </view> -->
+
+  <!-- 加载更多部分 -->
+  <view class="tips">
+      <view wx:if="{{hasMore}}"><image src="/images/loading.gif" mode="aspectFill"/><text>玩了命的加载中...</text></view>
+      <view wx:else><text>没有更多内容了</text></view>
+  </view>
+
+<!-- </scroll-view> -->
 </view>

@@ -168,7 +168,10 @@ Page({
       });
     },
     scroll(event) {//页面滚动时候触发
-    console.log(event)
+        //console.log(event)
+        this.setData({
+            showSearch: true,
+        }); 
       // if (event.detail.scrollTop > 200) {
       //   this.setData({
       //     showGoTop: true,
@@ -195,13 +198,23 @@ Page({
         let searchValue = this.data.inputValue;
         if(searchValue != '') {
             console.log(this.data.inputValue)
+            wx.navigateTo({
+                url: '../search-page/search-page?key=' + searchValue,
+                  success: (res) => {},
+                  fail: (err) => {
+                      console.log(err)
+                  }
+              });
+
+
+        } else {
+            wx.showModal({
+                title: '提示',
+                content: `你输入的数据：${this.data.inputValue != '' ? this.data.inputValue : '无效'}。`,
+                success: () => {},
+                fail: () => {}
+            });
         }
-        wx.showModal({
-            title: '提示',
-            content: `你输入的数据：${this.data.inputValue != '' ? this.data.inputValue : '是空的'} ,但是没用，我没做这个功能。`,
-            success: () => {},
-            fail: () => {}
-        });
     },
     ensureBtn(event) {//确定按钮事件
         this.bindSearch();
