@@ -18,6 +18,7 @@ Page({
 		let params = option;
     newsdata.find('article.json.php', params)
 			.then(res => {
+        //console.log(res)
         if (res.code == 200 && res.desc == 'ok') {
           console.log(res.data.contents);
           let imgsLen = res.data.imgs.length;
@@ -60,7 +61,7 @@ Page({
           });
           //console.log(this.data.select);
         } else {
-          console.log(d.code, d.desc);
+          console.log(res.code, res.desc);
         }})
 			.catch(err => {
 				this.setData({ title: '获取数据异常', loading: false })

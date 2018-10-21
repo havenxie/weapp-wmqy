@@ -8,18 +8,25 @@
 <loading hidden="{{!loading}}">加载中...</loading>
 <template is="toTop" data="{{showGoTop}}" />
 
-<view class="container"> 
+<scroll-view scroll-y="true" class="container" style="height: 100%;"> 
 
   
 <!-- 使用下拉刷新就会失去锚点跳转功能 -->
   <!-- <scroll-view  scroll-y="true" class="searchPage" style="height: 100%" scroll-top="{{scrollTop}}" scroll-into-view="{{toTitle}}"  enable-back-to-top="true" scroll-with-animation="true" bindscroll="bindScroll">   -->
 
  <!-- 搜索框部分 -->
-  <!-- <view class="{{showSearch == true? 'search' : 'search height'}}">
+  <view class="search height">
     <input type="text" placeholder="请输入关键字" focus="true" confirm-type="search" bindconfirm="bindSearch" bindinput="bindKeyInput" class="searcharea" wx:if="{{showSearch != true}}"/>
     <view class="searchbtn" wx:if="{{showSearch != true}}" bindtap="ensureBtn">确定</view>
     <icon  type="search" class="search-icon" size="30" bindtap="searchIcon" color="#999" wx:if="{{showSearch == true}}"/>
-  </view> -->
+  </view>
+
+    <!-- 新闻列表部分 -->
+  <view class="news marginTop">
+    <block wx:for="{{news.data}}" wx:key="news">
+        <template is="article-card" data="{{item}}" />
+    </block>
+  </view>
   <!-- <block wx:for="{{subjects}}" wx:for-item="subclass" wx:key="subjects"> -->
   <!-- 最上面的图片 -->
     <!-- <block wx:if="{{subclass.view == 'multiTitle'}}">
@@ -73,9 +80,9 @@
 
   <view class="tips">
      <view wx:if="{{loading}}"><image src="/images/loading.gif" mode="aspectFill"/><text>玩了命的加载中...</text></view>
-     <view wx:else><text>没有更多内容了</text></view>
+     <!-- <view wx:else><text>没有更多内容了</text></view> -->
  </view>
 
  <!-- </scroll-view>  -->
- </view> 
+ </scroll-view> 
  

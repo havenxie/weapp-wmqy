@@ -45,3 +45,7 @@
 	background-color: #de0000;
 	color: #666;
 }
+
+.marginTop {
+  margin-top: 68rpx;
+}
