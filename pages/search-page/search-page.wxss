@@ -43,4 +43,10 @@
 
 .searchPage {
 	background-color: #666;
+	background-color: #de0000;
+	color: #666;
+}
+
+.marginTop {
+  margin-top: 68rpx;
 }

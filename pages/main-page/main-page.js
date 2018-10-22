@@ -162,6 +162,15 @@ Page({
             }
         });
     },
+    navToSearch(event) {
+      wx.navigateTo({
+        url: '../search-page/search-page',
+        success: (res) => { },
+        fail: (err) => {
+          console.log(err)
+        }
+      })
+    },
     toTop(event) {//点击返回顶部
       this.setData({
         scrollTop: 0,
@@ -189,36 +198,8 @@ Page({
             inputValue: '',
         });    
     },
-    bindKeyInput: function(event) {//获取输入的数据
-        this.setData({
-          inputValue: event.detail.value
-        })
-    },
-    bindSearch() {//输入框点击完成事件
-        let searchValue = this.data.inputValue;
-        if(searchValue != '') {
-            console.log(this.data.inputValue)
-            wx.navigateTo({
-                url: '../search-page/search-page?key=' + searchValue,
-                  success: (res) => {},
-                  fail: (err) => {
-                      console.log(err)
-                  }
-              });
 
 
-        } else {
-            wx.showModal({
-                title: '提示',
-                content: `你输入的数据：${this.data.inputValue != '' ? this.data.inputValue : '无效'}。`,
-                success: () => {},
-                fail: () => {}
-            });
-        }
-    },
-    ensureBtn(event) {//确定按钮事件
-        this.bindSearch();
-    },
     /**
      * [onLoad 载入页面时执行的生命周期初始函数]
      * @return {[type]} [description]
