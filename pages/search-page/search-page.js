@@ -68,12 +68,6 @@ Page({
                     searchBack: true,
                     hasMore: res.page >= res.maxpage ? false : true
                   });
-                  // console.log(res)
-                  // if (res.page >= res.maxpage) {
-                  //     this.setData({
-                  //       hasMore: false,
-                  //     });
-                  //   }
               }
             } else {
             // console.log(res.code, res.desc);
