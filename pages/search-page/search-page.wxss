@@ -42,11 +42,124 @@
 
 
 .searchPage {
-	background-color: #666;
-	background-color: #de0000;
 	color: #666;
 }
 
 .marginTop {
   margin-top: 68rpx;
+}
+
+.search {
+  width: 100%;
+  /* 比上面54rpx大两个像素 */
+  height: 68rpx;
+  position: fixed;
+  top: 0;
+  display:flex;
+  flex-direction:row;
+  list-style:none;
+  z-index: 1004;  
+  background-color: #0071BC;
+}
+.searchLeft {
+  width: 86%;
+  display:flex;
+  flex-direction:row;
+  position: relative;
+}
+.search .searchLeft .searcharea {
+  flex:1 1 auto;
+  margin-left: 30rpx;
+  margin-right: 10rpx;
+  padding-left: 22rpx;
+  background-color: #fff;
+  height: 56rpx;
+  border: 1rpx solid #999;
+  border-radius: 28rpx;
+  font-size: 26rpx;
+}
+.search .searchRight {
+  right: 10rpx;
+  flex-basis: 120rpx;
+  -webkit-flex-basis: 120rpx;
+  height: 60rpx;
+  margin-right: 10rpx;
+  border-radius: 12rpx;
+  text-align: center;
+  line-height: 60rpx;
+  letter-spacing: 4rpx;
+  color: #f4f4f4;
+}
+.search-icon {
+  position: absolute;
+  top: 14rpx;
+  right: 30rpx;
+  opacity: .8; 
+  z-index: 1005;
+}
+
+.keywords {
+  color: #999;
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx;
+  font-size: 30rpx;
+  /* border: 1rpx solid #0071BC; */
+}
+.hotwords {
+  display: flex;
+  flex-direction: column;
+  /* border: 1rpx solid #de0000; */
+}
+.hotwords .hottitle {
+  /* border: 1rpx solid #666; */
+  margin-left: 20rpx;
+  font-size: 26rpx;
+
+}
+.hotwords .hotkeys {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-start;
+  flex-wrap: wrap;
+  margin: 30rpx 0rpx;
+}
+.hotwords .hotkeys  .hot-key {
+  border: 1rpx solid #ccc;
+  padding: 4rpx 20rpx;
+  border-radius: 30rpx;
+  margin: 10rpx;
+}
+
+
+.userwords {
+  display: flex;
+  flex-direction: column;
+  /* border: 1rpx solid #de0000; */
+}
+.userwords .usertitle {
+  /* border: 1rpx solid #666; */
+  margin: 0rpx 20rpx;
+  font-size: 26rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.userwords .usertitle .clear {
+  color: red;
+  font-size: 30rpx;
+}
+.userwords .userkeys {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 30rpx 0rpx;
+}
+.userwords .userkeys  .history-key {
+  border: 1rpx solid #ccc;
+  padding: 4rpx 20rpx;
+  border-radius: 30rpx;
+  margin: 10rpx;
+  
 }

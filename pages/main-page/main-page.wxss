@@ -28,3 +28,9 @@
   font-size: 32rpx;
 }
 
+.search-icon {
+  position: absolute;
+  top: 18rpx;
+  right: 20rpx;
+  opacity: .8;  
+}

@@ -7,6 +7,8 @@ Page({
       loading: false,
       hasMore: false,
       inputValue: '',
+      keywords: [],
+      searchBack: false, 
     },
     hideLoading() {
         wx.hideNavigationBarLoading();
@@ -36,7 +38,8 @@ Page({
                   console.log('没有搜索到结果，请重新输入关键词')
               } else {
                   that.setData({
-                      news: d
+                      news: d,
+                      searchBack: true,
                   });
               }
             } else {
@@ -91,6 +94,26 @@ Page({
     },
     onLoad(params) {
       //需要获取一些当前比较热门的关键字，用来显示热门搜索
+      newsdata.find('keywords.json.php', {})
+        .then(d => {
+          if(d.code == 200 && d.desc == 'ok') {
+            console.log(d);
+            this.setData({
+              keywords: d.keywords
+            });
+            // console.log(this.data.keywords)
+
+          } else {
+            console.log(d.code, d.desc);
+          }
+        })
+        .catch(e => {
+          this.setData({
+            subtitle: '获取数据异常',
+          })
+          console.error(e);
+
+        })
         //this.loadData();
     },
     onPullDownRefresh() {

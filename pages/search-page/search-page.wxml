@@ -7,8 +7,7 @@
 
 <loading hidden="{{!loading}}">加载中...</loading>
 <template is="toTop" data="{{showGoTop}}" />
-
-<scroll-view scroll-y="true" class="container" style="height: 100%;"> 
+<view scroll-y="true" class="container" style="height: 100%; padding-top: 68rpx;"> 
 
   
 <!-- 使用下拉刷新就会失去锚点跳转功能 -->
@@ -16,9 +15,43 @@
 
  <!-- 搜索框部分 -->
   <view class="search height">
-    <input type="text" placeholder="请输入关键字" focus="true" confirm-type="search" bindconfirm="bindSearch" bindinput="bindKeyInput" class="searcharea" wx:if="{{showSearch != true}}"/>
-    <view class="searchbtn"  bindtap="cancelBtn">取消</view>
-    <icon  type="search" class="search-icon" size="30" bindtap="searchIcon" color="#999" wx:if="{{showSearch == true}}"/>
+    <view class="searchLeft">
+      <input type="text" placeholder="请输入关键字" focus="true" confirm-type="search" bindconfirm="bindSearch" bindinput="bindKeyInput" class="searcharea" wx:if="{{showSearch != true}}"/>
+      <icon  type="search" class="search-icon" size="20" color="#999"/>
+    </view>
+    <view class="searchRight"  bindtap="cancelBtn">取消</view>
+  </view>
+
+  <view class="keywords" wx:if="{{searchBack == false}}">
+    <view class='hotwords'>
+      <view class='hottitle'>热门搜索</view>
+      <view class='hotkeys'>
+        <block wx:for="{{keywords}}" wx:key="keywords" >
+          <text class='hot-key'>{{item}}</text>
+        </block>
+      </view>
+    </view>
+    <view class='userwords'>
+      <view class='usertitle'>
+        <text>历史搜索</text>
+        <text class='clear'>清空</text>
+      </view>
+      <view class='userkeys'>
+        <text class='history-key'>我是</text>
+        <text class='history-key'>小米华为</text>
+        <text class='history-key'>matebook pro</text>
+        <text class='history-key'>沉迷抖音</text>
+        <text class='history-key'>发布会</text>
+        <text class='history-key'>写代码</text>
+        <!-- <block wx:for="{{keywords}}" wx:key="userwords" >
+          <text class='history-key'>{{item}}</text>
+        </block>       -->
+      </view>
+
+    </view>
+
+      <!-- <text>玩了命的加载中...</text> -->
+
   </view>
 
     <!-- 新闻列表部分 -->
@@ -83,6 +116,5 @@
      <!-- <view wx:else><text>没有更多内容了</text></view> -->
  </view>
 
- <!-- </scroll-view>  -->
- </scroll-view> 
+ </view> 
  
