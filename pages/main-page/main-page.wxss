@@ -29,7 +29,7 @@
 }
 
 .search-icon {
-  position: absolute;
+  position: fixed;
   top: 18rpx;
   right: 20rpx;
   opacity: .8;  

@@ -108,8 +108,7 @@ Page({
             })
             //console.error(e);
             this.hideLoading();
-        })
-           
+        }) 
     },
     navToSpecial(event) {
         let str = dealUrl.getUrlTypeId(event);
