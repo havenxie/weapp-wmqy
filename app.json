@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/main-page/main-page",
     "pages/search-page/search-page",
     "pages/article-page/article-page",
@@ -9,13 +9,14 @@
     "pages/index/index",
     "pages/logs/logs"
   ],
-  "window":{
+  "window": {
     "navigationBarBackgroundColor": "#0071BC",
     "navigationBarTitleText": "文明清远",
     "navigationStyle": "default",
-    "navigationBarTextStyle":"#000",
+    "navigationBarTextStyle": "white",
     "backgroundColor": "#fff",
-    "backgroundTextStyle": "durk",
+    "backgroundTextStyle": "dark",
     "enablePullDownRefresh": true
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

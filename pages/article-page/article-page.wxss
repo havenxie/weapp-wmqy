@@ -4,10 +4,10 @@
   align-items: stretch;
 }
 .body .title {
-  font-size:48rpx;
-  color:#000;
-  padding:36rpx 30rpx;
-  letter-spacing:2rpx;
+  font-size: 44rpx;
+  color:#333;
+  padding: 36rpx 28rpx;
+  letter-spacing: 2rpx;
 }
 .body .subscribe {
   display: flex;
@@ -50,10 +50,12 @@
 }
 .body .content .p {
   display: inline-block;
-  padding:20rpx 30rpx;
-  font-size:36rpx;
-  line-height:1.8;
-  letter-spacing:2rpx;
+  padding: 20rpx 20rpx;
+  font-size: 36rpx;
+  line-height: 1.6;
+  letter-spacing: 2rpx;
+  color: #000;
+  opacity: 0.9;
 }
 .body .footer {
   margin: 60rpx 30rpx;

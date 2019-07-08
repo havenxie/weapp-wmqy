@@ -10,7 +10,7 @@
 
 <!-- 轮播图组件总体 -->
 <template name="swiper">
-  <swiper class="swiper" autoplay="true" interval="5000" duration="1000" indicator-dots="{{swiper.length > 1}}">
+  <swiper class="swiper" autoplay="true" interval="5000" duration="1000" indicator-color="rgba(200, 200, 200, 0.5)" indicator-active-color="#ff0000" indicator-dots="{{swiper.length > 1}}">
     <block wx:for="{{swiper}}" wx:for-item="item" wx:key="index">
       <template is="swiper-item" data="{{item}}" />
     </block>
